@@ -1,0 +1,37 @@
+{% extends 'members/main.html' %}
+
+{% block content %}
+{% include 'members/status.html' %}
+<div class="row">
+    <div class="col">
+        <div class="col-md">
+            <h5 align="center"> Member's Total Savings </h5>
+            <hr>
+            <div class="card card-body">
+                
+                <table class="table table-bordered table-sm table-hover">
+                    <tr>
+                        <th>Member ID</th>
+                        <th>Name</th>
+                        <th>Telephone</th>
+                        <!-- <th>Status</th> -->
+                        <th>Total Savings</th>
+                        
+                    </tr>
+
+                    {% for member in member_balance %}
+
+                    <tr>
+                        <td>{{member.member_id}}</td>
+                        <td>{{member.full_name}}</td>
+                        <td>{{member.telephone}}</td>
+                        <!-- <td>{{member.marital_status}}</td> -->
+                        <td>{{ member.total_savings|floatformat:"-3g" }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
